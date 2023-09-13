@@ -14,6 +14,9 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+nextjs-portal {
+  display: none;
+}
 
 ::-webkit-scrollbar {
   width: 5px;

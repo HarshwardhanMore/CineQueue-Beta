@@ -18,7 +18,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export default function addMovie() {
+export default function AddMovie() {
   const { isLoaded, isSignedIn, user } = useUser();
   if (!user) return null;
 

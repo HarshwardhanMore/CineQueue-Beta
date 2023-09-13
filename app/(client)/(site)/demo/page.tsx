@@ -7,7 +7,7 @@ import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import LoadingComponent from "@/components/custom/loadingComponent";
 
-const page = () => {
+const DemoPage = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   if (!user) return null;
 
@@ -33,4 +33,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default DemoPage;
