@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.className} bg-black text-white`}>
+        <body className={`${inter.className}`}>
           <ToasterContext />
           {children}
         </body>

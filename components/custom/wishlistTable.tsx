@@ -1,5 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
+import { useUser } from "@clerk/nextjs";
+
+import LoadingComponent from "@/components/custom/loadingComponent";
+
 import * as React from "react";
 import {
   ColumnDef,
@@ -36,66 +42,76 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Payment[] = [
-  {
-    id: "m5gr84i9",
-    genre: "Action Adventure",
-    status: "watched",
-    movie: "Captain America",
-  },
-  {
-    id: "3u1reuv4",
-    genre: "Action Scifi",
-    status: "watched",
-    movie: "Iron Man",
-  },
-  {
-    id: "derv1ws0",
-    genre: "Action Disaster",
-    status: "watching",
-    movie: "Hulk",
-  },
-  {
-    id: "5kma53ae",
-    genre: "Action Comedy",
-    status: "watched",
-    movie: "Superman",
-  },
-  {
-    id: "bhqecj4p",
-    genre: "ACtion Dark",
-    status: "not watched",
-    movie: "Batman",
-  },
+let data: Payment[] = [
+  // {
+  //   id: "m5gr84i9",
+  //   genre: "Action Adventure",
+  //   status: "watched",
+  //   name: "Captain America",
+  // },
+  // {
+  //   id: "3u1reuv4",
+  //   genre: "Action Scifi",
+  //   status: "watched",
+  //   name: "Iron Man",
+  // },
+  // {
+  //   id: "derv1ws0",
+  //   genre: "Action Disaster",
+  //   status: "watching",
+  //   name: "Hulk",
+  // },
+  // {
+  //   id: "5kma53ae",
+  //   genre: "Action Comedy",
+  //   status: "watched",
+  //   name: "Superman",
+  // },
+  // {
+  //   id: "bhqecj4p",
+  //   genre: "ACtion Dark",
+  //   status: "not watched",
+  //   name: "Batman",
+  // },
 ];
 
 export type Payment = {
+  createdDate: string;
+  creatorId: string;
+  description: string;
+  genre: string[];
   id: string;
-  genre: string;
-  status: "pending" | "watching" | "watched" | "not watched";
-  movie: string;
+  name: string;
+  status: string;
+  updatedDate: string;
 };
+// export type Payment = {
+//   id: string;
+//   genre: string;
+//   status: "pending" | "watching" | "watched" | "not watched";
+//   name: string;
+// };
 
 export const columns: ColumnDef<Payment>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={table.getIsAllPageRowsSelected()}
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
+  // {
+  //   id: "select",
+  //   header: ({ table }) => (
+  //     <Checkbox
+  //       checked={table.getIsAllPageRowsSelected()}
+  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //       aria-label="Select all"
+  //     />
+  //   ),
+  //   cell: ({ row }) => (
+  //     <Checkbox
+  //       checked={row.getIsSelected()}
+  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //       aria-label="Select row"
+  //     />
+  //   ),
+  //   enableSorting: false,
+  //   enableHiding: false,
+  // },
   {
     accessorKey: "status",
     header: "Status",
@@ -104,7 +120,7 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "movie",
+    accessorKey: "name",
     header: ({ column }) => {
       return (
         <Button
@@ -116,7 +132,7 @@ export const columns: ColumnDef<Payment>[] = [
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("movie")}</div>,
+    cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "genre",
@@ -161,6 +177,28 @@ export const columns: ColumnDef<Payment>[] = [
 ];
 
 export default function WishlistTable() {
+  // const { isLoaded, isSignedIn, user } = useUser();
+  // if (!user) return null;
+
+  const [data2, setData2] = React.useState<any>(null);
+  const [isLoading, setLoading] = React.useState<boolean>(true);
+
+  useEffect(() => {
+    fetch("/api/addmovie")
+      .then((res) => res.json())
+      .then((data2) => {
+        setData2(data2);
+        setLoading(false);
+      });
+  }, []);
+
+  // if (isLoading) return <LoadingComponent />;
+  // if (!data) return <p>No data found</p>;
+
+  // data = [...data, data2];
+
+  console.log(data2);
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

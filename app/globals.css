@@ -8,6 +8,28 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.bg-watchlist {
+  background-image: url("/images/cinema2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  display: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2b2a22;
+}
 
 @layer base {
   :root {

@@ -8,48 +8,37 @@ import { useUser } from "@clerk/nextjs";
 
 import LoadingComponent from "@/components/custom/loadingComponent";
 import DataTable from "@/components/custom/wishlistTable";
+import WishList from "@/components/custom/wishList";
+// import MuiDataTable from "@/components/custom/muiDataTable";
 
 const WatchListPage = () => {
-  const { isLoaded, isSignedIn, user } = useUser();
-  if (!user) return null;
+  // const { isLoaded, isSignedIn, user } = useUser();
+  // if (!user) return null;
 
-  const [data, setData] = useState<any>(null);
-  const [isLoading, setLoading] = useState<boolean>(true);
+  // const [data, setData] = useState<any>(null);
+  // const [isLoading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    fetch("/api/addmovie")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/api/addmovie")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
-  if (isLoading) return <LoadingComponent />;
-  if (!data) return <p>No data found</p>;
+  // if (isLoading) return <LoadingComponent />;
+  // if (!data) return <p>No data found</p>;
 
   return (
     <>
-      <div className="h-screen w-screen flex justify-center items-end overflow-hidden bg-white text-black">
-        <div className="w-[90%] h-[90%]">
-          {/* <div>Watchlist</div> */}
-          <div>
-            <DataTable />
-          </div>
-          {/* <div> My name is {user.id}</div>
-          <div>
-            {data.map((i: any) => {
-              if (i.creatorId == user.id)
-                return (
-                  <div>
-                    <div>{i.name}</div>
-                    <div>{i.description}</div>
-                    <div>{i.creatorId}</div>
-                  </div>
-                );
-            })}
-          </div> */}
+      <div className="h-screen w-screen flex justify-center items-end overflow-hidden bg-watchlist text-white">
+        {/* <div className="h-full w-full flex items-center justify-center bg-black bg-opacity-50"> */}
+        <div className="w-[90%] h-[90%] overflow-hidden">
+          <WishList />
+          {/* <MuiDataTable /> */}
         </div>
+        {/* </div> */}
       </div>
     </>
   );

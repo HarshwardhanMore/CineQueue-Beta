@@ -17,7 +17,7 @@ export const GET = async (req: Request) => {
 export const POST = async (req: Request) => {
   try {
     const { name, description, status, genre, creatorId } = await req.json();
-    if (!name || !description)
+    if (!name)
       return NextResponse.json({ error: "Invalid Data" }, { status: 422 });
 
     await connectToDb();
