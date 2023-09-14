@@ -19,8 +19,8 @@ import {
 } from "@/components/ui/popover";
 
 export default function AddMovie() {
-  const { isLoaded, isSignedIn, user } = useUser();
-  if (!user) return null;
+  // const { isLoaded, isSignedIn, user } = useUser();
+  // if (!user) return null;
 
   const [data, setData] = useState<{
     name: string;
@@ -33,7 +33,7 @@ export default function AddMovie() {
     description: "",
     status: "",
     genre: [],
-    creatorId: user.id,
+    creatorId: "",
   });
 
   const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
