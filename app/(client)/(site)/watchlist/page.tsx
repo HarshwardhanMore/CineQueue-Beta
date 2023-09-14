@@ -32,7 +32,7 @@ const WatchListPage = () => {
 
   return (
     <>
-      <div className="h-screen w-screen flex justify-center items-end overflow-hidden bg-watchlist text-white">
+      <div className="h-screen w-screen flex justify-center items-end overflow-hidden bg-watchlist text-white  font-hind">
         {/* <div className="h-full w-full flex items-center justify-center bg-black bg-opacity-50"> */}
         <div className="w-[90%] h-[90%] overflow-hidden">
           <WishList />

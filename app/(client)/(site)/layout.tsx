@@ -17,9 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <div className=" absolute top-0 right-0 w-full h-[10%] flex justify-center items-center">
+      <div className=" absolute top-0 right-0 w-full h-[10%] flex justify-center items-center font-hind">
         <div className=" w-5/6 h-full flex justify-end items-center">
-          <UserButton afterSignOutUrl="/" />
+          <UserButton afterSignOutUrl="/sign-in" />
         </div>
       </div>
       <div className=" w-screen h-screen">{children}</div>

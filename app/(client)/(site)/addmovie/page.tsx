@@ -148,12 +148,14 @@ export default function AddMovie() {
 
   return (
     <>
-      <div className=" h-full w-full flex items-center justify-center bg-addmovie text-white overflow-x-hidden">
+      <div className=" h-full w-full flex items-center justify-center bg-addmovie text-white overflow-x-hidden  font-hind">
         <div className=" h-full w-full flex items-center justify-center bg-black bg-opacity-50">
           <div className=" w-5/6 ">
             <div className="flex flex-col items-center justify-center my-5">
-              <div className=" text-8xl font-bold mb-2">CineQueue</div>
-              <div className=" w-full text-sm text-slate-500 text-center">
+              <div className=" text-8xl font-bold mb-2 font-nunito">
+                CineQueue
+              </div>
+              <div className=" w-full text-sm text-slate-500 text-center font-tienne">
                 "Creating and maintaining a movie watchlist is akin to curating
                 a personal museum of cinematic experiences. It's a testament to
                 our love for storytelling, a visual library of emotions, and a
